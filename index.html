@@ -1,79 +1,253 @@
-<!doctype html>
-<html>
-  <head>
-    <!-- Page setup -->
-    <meta charset="utf-8">
-    <title>Your title here</title>
-    <meta name="description" content="A brief description of your site for search engines">
-    <meta name="author" content="Information about the author here">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link rel="icon" type="image/png" href="favicon.png">
-  
-    <!-- Stylesheets -->
-    <!-- Reset default styles and add support for google fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
-   
-    <!-- Custom styles -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gustavo Lazaro | Mechanical Engineering Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
+    body {
+      background-color: #f4f6f8;
+      color: #222;
+      line-height: 1.6;
+    }
 
-    <!-- Want to add Bootstrap? -->
-    <!-- Visit: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
-    
-  </head>
-  
-  <body>
+    header {
+      background-color: #1f2937;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-    <header id="header">
-      <img src="logo.png">
-      <h1>Simple Website</h1>
-      
-      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
-      <ul class="main-menu">
-        <li><a href="#home">home</a></li>
-        <li><a href="#about">about</a></li>
-        <li><a href="#contact">contact</a></li>
-      </ul>                 
-    </header>
-   
-    <div id="container">
-      <div class="inner">
-        <div id="content"> 
-          
-          <div id="home" class="content-region hide">
-            <h2>Home</h2>
-            <p>
-              This is a simple website template published with Github Pages. <a href="https://github.com/zirafa/simple-website-template">Fork this repository</a> to create your own site!
-            </p>
-          </div>
-          
-          <div id="about" class="content-region hide">
-            <h2>About</h2>
-            <p>
-              Sed tempus urna et pharetra pharetra massa massa ultricies. Porttitor rhoncus dolor purus non enim praesent. Id aliquet risus feugiat in ante metus dictum. 
-            </p>
-          </div>
-          
-          <div id="contact" class="content-region hide">
-            <h2>Contact</h2>
-            <p>
-              Pellentesque nec nam aliquam sem et tortor consequat. Quisque sagittis purus sit amet volutpat consequat. Magna eget est lorem ipsum dolor. 
-            </p>
-          </div>
-          
-        </div>
-      </div>
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #d1d5db;
+    }
+
+    nav {
+      background-color: #111827;
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #60a5fa;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 25px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      color: #1f2937;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #374151;
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .skill-card {
+      background-color: #f9fafb;
+      padding: 15px;
+      border-left: 4px solid #2563eb;
+      border-radius: 8px;
+    }
+
+    .project-card {
+      background-color: #f9fafb;
+      padding: 18px;
+      border-radius: 8px;
+      margin-top: 15px;
+      border-left: 4px solid #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #1f2937;
+      color: white;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 8px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gustavo Lazaro</h1>
+    <p>Mechanical Engineering Student | Hands-On Diagnostics | Testing & Design</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a Mechanical Engineering student with hands-on experience in mechanical,
+      electrical, and hydraulic troubleshooting, equipment diagnostics, and engineering
+      project work. My background combines practical field experience with engineering
+      analysis, design, testing, and problem solving.
+    </p>
+    <p>
+      I am interested in engineering roles involving testing, design validation,
+      mechanical systems, vehicle performance, and product development.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+      <h3>Northrop Grumman Collaboration Project</h3>
+      <p><strong>UAV Payload Detachment Mechanism</strong></p>
+      <ul>
+        <li>
+          Developed a UAV payload detachment mechanism for a Northrop Grumman
+          collaboration project, applying mechanical design principles to improve
+          payload integration, release reliability, and system packaging.
+        </li>
+        <li>
+          Supported team-based engineering reviews by contributing to design
+          documentation, trade studies, prototype planning, and technical presentations
+          for senior project milestones.
+        </li>
+        <li>
+          Contributed to test planning and design evaluation by considering payload
+          release behavior, system reliability, packaging constraints, and vehicle
+          integration requirements to support safe and predictable UAV performance.
+        </li>
+      </ul>
     </div>
 
-    <footer>  
-      Footer region
-    </footer>
-    
-    <!-- Load additional JS scripts here -->
-    <script type="text/javascript" src="script.js"></script>
-    
-  </body>
+    <div class="project-card">
+      <h3>Mechanical Design and Analysis</h3>
+      <p>
+        Completed engineering coursework and projects involving mechanical design,
+        stress analysis, material selection, CAD modeling, and design calculations.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Mechanical Systems</h3>
+        <p>Mechanical troubleshooting, equipment diagnostics, hydraulic systems, and component inspection.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Electrical & Controls</h3>
+        <p>DC electrical troubleshooting, schematic reading, sensors, and system-level diagnostics.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Engineering Tools</h3>
+        <p>SolidWorks, MATLAB, FEMAP/NASTRAN, Microsoft Word, and Excel.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Professional Skills</h3>
+        <p>Technical communication, teamwork, problem solving, customer service, and fast-paced repair environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <p>
+      My resume highlights my mechanical engineering education, hands-on technician
+      experience, engineering projects, and technical skills.
+    </p>
+    <p>
+      Add your resume PDF to this repository, then update the link below to match the file name.
+    </p>
+    <a class="button" href="resume.pdf" target="_blank">View Resume</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> your-email@example.com</p>
+    <p><strong>LinkedIn:</strong> Add your LinkedIn link here</p>
+    <p><strong>GitHub:</strong> Add your GitHub profile link here</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Gustavo Lazaro. All rights reserved.</p>
+  </footer>
+</body>
 </html>
