@@ -162,6 +162,87 @@
         height: 160px;
       }
     }
+  
+  /* Image grid styling */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #f4f6f8;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.image-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* Lightbox enlarged image popup */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding: 30px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-lightbox:hover {
+  color: #d1d5db;
+}
+
+@media (max-width: 600px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid img {
+    height: 260px;
+  }
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </style>
 </head>
 
@@ -344,5 +425,45 @@
   <footer>
     <p>&copy; 2026 Gustabo Lazaro. All rights reserved.</p>
   </footer>
+
+<!-- Lightbox popup for enlarged images -->
+<div id="lightbox" class="lightbox">
+  <span class="close-lightbox">&times;</span>
+  <img id="lightbox-img" src="" alt="Expanded project image">
+</div>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeLightbox = document.querySelector(".close-lightbox");
+
+  document.querySelectorAll(".image-grid img").forEach(image => {
+    image.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = image.src;
+      lightboxImg.alt = image.alt;
+    });
+  });
+
+  closeLightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      lightbox.style.display = "none";
+    }
+  });
+</script>
+
+
+
+
 </body>
 </html>
